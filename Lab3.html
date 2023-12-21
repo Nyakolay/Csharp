@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  	<title>Лаб 3</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="style3.css" rel="stylesheet">
+</head>
+<body>
+<header>
+      <div>
+        <img  class="logo" src="images/NVSU.png" width="100" height="100" alt="Логотип НВГУ">
+      </div>
+        <nav class="main-menu">
+          <ul>
+          <li><a href="index.html">На главную</a></li>
+          </ul>
+        </nav> 
+</header>
+    
+<main>
+<article class="about-vuz">
+<img src="images/zadLab3_1.jpg" height="311">
+<pre>
+abstract class K1
+{
+    public abstract void vvod();
+    public abstract void vivod();
+}
+class K2 : K1
+{
+    private double x, y, z;
+    public K2()
+    {
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+    }
+
+    public override void vvod()
+    {
+        Console.Write("Введите x: ");
+        x = double.Parse(Console.ReadLine());
+        Console.Write("Введите y: ");
+        y = double.Parse(Console.ReadLine());
+        Console.Write("Введите z: ");
+        z = double.Parse(Console.ReadLine());
+    }
+    public override void vivod()
+    {
+        Console.WriteLine("Вывод данных объекта класса К2: x = {0}, y = {1}, z = {2}", x, y, z);
+    }
+}
+class K3 : K1
+{
+    private int a, b, c;
+    public K3() { a = 0; b = 0; c = 0; }
+    public override void vvod()
+    {
+        Console.Write("Введите a: ");
+        a = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        b = int.Parse(Console.ReadLine());
+        Console.Write("Введите c: ");
+        c = int.Parse(Console.ReadLine());
+    }
+    public override void vivod()
+    {
+        Console.WriteLine("Вывод данных объекта класса К3: a = {0}, b = {1}, c = {2}", a, b, c);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        K1 xyz = new K2();
+        K1 abc = new K3();
+
+        xyz.vvod();
+        xyz.vivod();
+        abc.vvod();
+        abc.vivod();
+
+    }
+}
+</pre>
+<img src="images/screenLab3_1.jpg" height="350">
+<img src="images/zadLab3_2.jpg" height="50">
+<pre>
+interface IMain
+{
+    void VvodData(IGetData data);
+    void VivodData(IGetData data);
+}
+
+interface IGetData
+{
+    void vivod();
+    void vvod();
+}
+
+class k : IMain
+{
+    public void VivodData(IGetData data)
+    {
+        data.vivod();
+    }
+
+    public void VvodData(IGetData data)
+    {
+        data.vvod();
+    }
+}
+
+class k1 : IGetData
+{
+    private double x, y, z;
+
+    public void vivod()
+    {
+        Console.WriteLine("Вывод данных объекта класса К1: x = {0}, y = {1}, z = {2}\n", x, y, z);
+    }
+
+    public void vvod()
+    {
+        Console.Write("Введите x: ");
+        x = double.Parse(Console.ReadLine());
+        Console.Write("Введите y: ");
+        y = double.Parse(Console.ReadLine());
+        Console.Write("Введите z: ");
+        z = double.Parse(Console.ReadLine());
+    }
+}
+class k2 : IGetData
+{
+    private int a, b, c;
+
+    public void vivod()
+    {
+        Console.WriteLine("Вывод данных объекта класса К2: a = {0}, b = {1}, c = {2}\n", a, b, c);
+    }
+
+    public void vvod()
+    {
+        Console.Write("Введите a: ");
+        a = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        b = int.Parse(Console.ReadLine());
+        Console.Write("Введите c: ");
+        c = int.Parse(Console.ReadLine());
+    }
+}
+
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        IMain data = new k();
+
+        k1 xyz = new k1();
+        k2 abc = new k2();
+
+        data.VvodData(xyz);
+        data.VivodData(xyz);
+        data.VvodData(abc);
+        data.VivodData(abc);
+
+
+    }
+}
+</pre>
+
+
+<img src="images/screenLab3_2.jpg" height="350">
+<img src="images/zadLab3_3.jpg" height="200">
+
+
+<pre>
+interface IK1
+{
+    void vvod();
+    void vivod();
+}
+interface IK2 : IK1
+{
+    void sum();
+    void mult();
+}
+class myclass : IK2
+{
+    private int x, y, z;
+    public void mult()
+    {
+        Console.WriteLine("Произведение x * y * z = {0} * {1} * {2} = {3}\n", x, y, z, (x * y * z));
+    }
+
+    public void sum()
+    {
+        Console.WriteLine("Сумма x + y + z = {0} + {1} + {2} = {3}\n", x, y, z, (x + y + z));
+    }
+
+    public void vivod()
+    {
+        Console.WriteLine("Вывод данных: x = {0}, y = {1}, z = {2}\n", x, y, z);
+    }
+
+    public void vvod()
+    {
+        Console.WriteLine("Введите данные:");
+        Console.Write("x -> ");
+        x = int.Parse(Console.ReadLine());
+        Console.Write("y -> ");
+        y = int.Parse(Console.ReadLine());
+        Console.Write("z -> ");
+        z = int.Parse(Console.ReadLine());
+        Console.WriteLine();
+    }
+}
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        myclass myclass = new myclass();
+        myclass.vvod();
+        myclass.vivod();
+        myclass.sum();
+        myclass.mult();
+    }
+}
+</pre>
+<img src="images/screenLab3_3.jpg" height="350">
+<br><a href="index.html">На главную</a>
+</article>
+</main>
+
+<footer class="page-footer">
+	<div class="nvsu">
+		<a href="https://nvsu.ru">Сайт университета</a>
+	</div>
+	<div class="copyright">
+		Николай Ялуков 3002 ФИТиМ
+	</div>
+</footer>
+</body>
+
+</html>

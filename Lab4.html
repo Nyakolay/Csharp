@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  	<title>Лаб 4</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="style4.css" rel="stylesheet">
+</head>
+<body>
+<header>
+      <div>
+        <img  class="logo" src="images/NVSU.png" width="100" height="100" alt="НВГУ">
+      </div>
+        <nav class="main-menu">
+          <ul>
+          <li><a href="index.html">На главную</a></li>
+          </ul>
+        </nav>
+</header>
+    
+<main>
+<article class="about-prof">
+<img src="images/zadLab4_11.jpg" height="111">
+<img src="images/zadLab4_1.jpg" height="111">
+<pre>
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Random random = new Random();
+        int n;
+        do
+        {
+            Console.Write("Введите кол-во элементов списка(>5) -> ");
+            n = int.Parse(Console.ReadLine());
+        } while (n < 5);
+        List<char> mas1 = new List<char>();
+        for (int i = 0; i < n; i++)
+        {
+            mas1.Add((char)random.Next(0x0410, 0x44F));
+        }
+        List<char> mas2 = new List<char>();
+        for (int i = 0; i < (mas1.Count / 2); i++)
+        {
+            mas2.Add(mas1[i]);
+        }
+        mas2.Sort();
+        foreach (char i in mas2)
+        {
+            Console.WriteLine(i);
+        }
+        int count = -1;
+        try
+        {
+            Console.Write("\nВывести элемент под номером -> ");
+            count = int.Parse(Console.ReadLine());
+            Console.WriteLine(mas2[count - 1]);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Такого номера нет");
+        }
+
+        try
+        {
+            Console.WriteLine("\nВведите новые 1, 3, 5 элементы:");
+            Console.Write("1 -> ");
+            char a = char.Parse(Console.ReadLine());
+            mas2[0] = a;
+            Console.Write("3 -> ");
+            char b = char.Parse(Console.ReadLine());
+            mas2[2] = b;
+            Console.Write("5 -> ");
+            char c = char.Parse(Console.ReadLine());
+            mas2[4] = c;
+            Console.WriteLine("Вывод обновленного списка: ");
+            foreach (char i in mas2)
+            {
+                Console.WriteLine(i);
+            }
+
+
+        }
+        catch
+        {
+
+        }
+        try
+        {
+            int one = int.Parse(Console.ReadLine());
+        }
+        catch
+        {
+
+        }
+
+    }
+}
+</pre>
+<img src="images/screenLab4_1.jpg" height="500"><br>
+<img src="images/zadLab4_22.jpg" height="111">
+<img src="images/zadLab4_2.jpg" height="90">
+<pre>
+namespace _4
+{
+    internal class _4
+    {
+        private static void Main(string[] args)
+        {
+            bool[] myBools1 = new bool[12] { true, false, false, true, true, false, true, true, true, true, false, false  };
+            BitArray BAB1 = new BitArray(myBools1);
+            bool[] myBools2 = new bool[12] { false, false, false, true, true, false, true, true, true, true, false, true  };
+            BitArray BAB2 = new BitArray(myBools2);
+            Console.WriteLine("myBA4");
+            Console.WriteLine("\tCount: {0}", BAB1.Count);
+            Console.WriteLine("\tLength: {0}", BAB2.Length);
+            
+
+            bool[] MyBools3 = new bool[12];
+            BitArray Sum = new BitArray(MyBools3);
+            Console.WriteLine();
+            for (int i = 0; i < 12; i++)
+            {
+                Sum[i] = BAB1[i] || BAB2[i];
+                Console.WriteLine(BAB1[i] + " + " + BAB2[i] + " = " + Sum[i]);
+            }
+
+            bool[] MyBools4 = new bool[12];
+            BitArray Mult = new BitArray(MyBools4);
+            Console.WriteLine();
+            for (int i = 0; i < 12; i++)
+            {
+                Sum[i] = BAB1[i] && BAB2[i];
+                Console.WriteLine(BAB1[i] + " * " + BAB2[i] + " = " + Sum[i]);
+            }
+
+            bool[] MyBools5 = new bool[12];
+            BitArray Invers = new BitArray(MyBools5);
+            Console.WriteLine();
+            for (int i = 0; i < 12; i++)
+            {
+                Sum[i] = !BAB1[i];
+                Console.WriteLine("!" + BAB1[i] + " = " + Sum[i]);
+            }
+
+
+
+        }
+    }
+
+}
+</pre>
+<img src="images/screenLab4_2.jpg" height="700">
+<br><a href="index.html">На главную</a>
+</article>
+</main>
+
+<footer class="page-footer">
+	<div class="nvsu">
+		<a href="https://nvsu.ru">Сайт университета</a>
+	</div>
+	<div class="copyright">
+		Николай Ялуков 3002 ФИТиМ
+	</div>
+</footer>
+</body>
+
+</html>

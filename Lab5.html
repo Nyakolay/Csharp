@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  	<title>Лаба №5</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="style5.css" rel="stylesheet">
+</head>
+<body>
+<header>
+      <div>
+        <img  class="logo" src="images/NVSU.png" width="100" height="100" alt="НВГУ">
+      </div>
+        <nav class="main-menu">
+          <ul>
+          <li><a href="index.html">На главную</a></li>
+          </ul>
+        </nav>
+</header>
+    
+<main>
+<article class="about-group">
+<h1>Лабораторная №5</h1>
+<img src="images/zadLab5_1.jpg" height="111">
+<pre>
+namespace Lab5
+{
+    public partial class Form1 : Form
+    {
+        public Graphics g;
+        Random r = new Random();
+        public void init()
+        {
+            g = CreateGraphics();
+        }
+
+
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            Size = new Size(1920, 1080);
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            init();
+            int figure = r.Next(0, 3);
+            g.Clear(Color.White);
+            switch (figure)
+            {
+                case 0:
+                    g.DrawEllipse(new Pen(Color.Black, 4), r.Next(150, 1150), r.Next(150, 550), r.Next(50, 300), r.Next(50, 200));
+                    break;
+                case 1:
+                    Point p1 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p2 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p3 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p4 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p5 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p6 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p7 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p8 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point p9 = new Point(r.Next(150, 1350), r.Next(150, 750));
+                    Point[] points = { p1, p2, p3, p4, p5, p6, p7, p8, p9};
+                    g.FillPolygon(new SolidBrush(Color.Green), points);
+                    break;
+                case 2:
+                    g.FillRectangle(new SolidBrush(Color.Blue), r.Next(150, 1150), r.Next(150, 550), r.Next(50, 300), r.Next(50, 300));
+                    break;
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+            }
+        }
+    }
+}
+</pre>
+<img src="images/screenLab5_1.jpg" height="300">
+<img src="images/screenLab5_2.jpg" height="300">
+<img src="images/screenLab5_3.jpg" height="300">
+<br><a href="index.html">На главную</a>
+</article>
+</main>
+
+<footer class="page-footer">
+	<div class="nvsu">
+		<a href="https://nvsu.ru">Сайт университета</a>
+	</div>
+	<div class="copyright">
+		Николай Ялуков 3002 ФИТиМ
+	</div>
+</footer>
+</body>
+
+</html>

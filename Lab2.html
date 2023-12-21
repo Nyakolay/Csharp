@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  	<title>Лаб 2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="style2.css" rel="stylesheet">
+</head>
+<body>
+<header>
+      <div>
+        <img  class="logo" src="images/NVSU.png" width="110" height="110" alt="НВГУ">
+      </div>
+        <nav class="main-menu">
+          <ul>
+          <li><a href="index.html">На главную</a></li>
+          </ul>
+        </nav>
+</header>
+    
+<main>
+	<article class="about-hobby">
+<h1>Лабораторная №2</h1>
+<img src="images/zadLab2_1.jpg" height="90">
+<pre>
+namespace ConsoleApplication1
+{
+    struct Client // структура Client - элемент очереди
+    {
+        public Byte Age;
+
+        public Client(Byte Age) // конструктор клиента
+        {
+            this.Age = Age;
+        }
+        public void WriteClient() // вывод данных о клиенте
+        {
+            Console.WriteLine("возраст - {0}", Age);
+        }
+    }
+    class Program
+    {
+        static void Main()
+        {
+            Client cl; // клиент (структура - запись)
+            int n = 3; // задайте количество очередей целым числом
+            Queue<Client>[] qe = new Queue<Client>[n]; // N очередей клиентов
+            Random rn = new Random(); // генератор псевдослучайных чисел
+            for (int j = 0; j < n; j++) // цикл по N очередям
+            {
+                qe[j] = new Queue<Client>(); // конструктор j-й очереди
+                for (int i = 0; i < 3; i++) // добавление в очередь клиентов 
+                {
+                    cl.Age = (byte)rn.Next(20, 60); // возраст клиента 
+                    qe[j].Enqueue(cl); // добавление в j-ю очередь
+                }
+                // количество элементов в очереди
+                Console.WriteLine("длина очереди = {0}", qe[j].Count);
+                Console.Write("Исходная очередь: \n");
+                foreach (Client kl in qe[j]) // всю j-ю очередь - на печать
+                    kl.WriteClient();
+                Client kg = qe[j].Peek(); // чтение элемента из головы очереди 
+                Console.WriteLine("длина очереди = {0}", qe[j].Count);
+                Console.Write("Головной элемент: \n");
+                kg.WriteClient(); // первый клиент в очереди
+
+                qe[j].Dequeue(); // удаление первого элемента из очереди
+                Console.WriteLine("длина очереди = {0}", qe[j].Count);
+                Console.Write("Очередь: \n");
+                foreach (Client kl in qe[j]) // всю очередь - на печать
+                    kl.WriteClient();
+                Console.WriteLine("-----------------------------конец очереди {0} ", j); // разделитель очередей
+            }
+            Console.ReadLine();
+        }
+    }
+}
+</pre>
+<img src="images/screenLab2_1.jpg" height="500">
+<img src="images/zadLab2_2.jpg" height="90">
+<pre>
+class Example
+{
+    public static void Main()
+    {
+        Stack<int> numbers = new Stack<int>();
+        numbers.Push(1);
+        numbers.Push(2);
+        numbers.Push(3);
+        numbers.Push(4);
+        numbers.Push(5);
+
+        // A stack can be enumerated without disturbing its contents.
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+
+        Console.WriteLine("\nPopping '{0}'", numbers.Pop());
+        Console.WriteLine("Peek at next item to destack: {0}",
+            numbers.Peek());
+        Console.WriteLine("Popping '{0}'", numbers.Pop());
+
+        // Create a copy of the stack, using the ToArray method and the
+        // constructor that accepts an IEnumerable<T>.
+        Stack<int> stack2 = new Stack<int>(numbers);
+
+        Console.WriteLine("\nContents of the first copy:");
+        foreach (int number in stack2)
+        {
+            Console.WriteLine(number);
+        }
+
+        // Create an array twice the size of the stack and copy the
+        // elements of the stack, starting at the middle of the
+        // array.
+        int[] array2 = new int[numbers.Count * 2];
+        numbers.CopyTo(array2, numbers.Count);
+
+        // Create a second stack, using the constructor that accepts an
+        // IEnumerable(Of T).
+        Stack<int> stack3 = new Stack<int>(array2);
+
+        Console.WriteLine("\nContents of the second copy, with duplicates and nulls:");
+        foreach (int number in stack3)
+        {
+            Console.WriteLine(number);
+        }
+
+        Console.WriteLine("\nstack2.Contains(\"4\") = {0}",
+            stack2.Contains(4));
+
+        Console.WriteLine("\nstack2.Clear()");
+        stack2.Clear();
+        Console.WriteLine("\nstack2.Count = {0}", stack2.Count);
+    }
+}
+</pre>
+<img src="images/screenLab2_2.jpg" height="500">
+<img src="images/zadLab2_3.jpg" height="90">
+<pre>
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        SortedList<int, string> fio = new SortedList<int, string>();
+        fio.Add(1, "Yalukov Nikolay Vladimirovich");
+        fio.Add(2, "Moskvin Rostislav Nikolaevich");
+        fio.Add(3, "Godvan Anna Nikolaevna");
+        foreach (int i in fio.Keys)
+        {
+            Console.WriteLine("Порядковый номер: " + i +
+                " —— ФИО: " + fio[i]);
+        }
+        fio.Remove(1);
+        Console.WriteLine("-----------------------------конец листа {0} "); // разделитель очередей
+        foreach (int j in fio.Keys)
+        {
+            Console.WriteLine("Порядковый номер: " + j +
+                " —— ФИО: " + fio[j]);
+        }
+        Console.WriteLine("object 3");
+        object q = fio[3];
+        Console.WriteLine(q);
+        Console.WriteLine("isFound ContainsKey(2)");
+        bool isFound = fio.ContainsKey(2);
+        Console.WriteLine(isFound);
+
+    }
+}
+</pre>
+<img src="images/screenLab2_3.jpg" height="400">
+<br><a href="index.html">На главную</a>
+	</article>
+</main>
+
+<footer class="page-footer">
+	<div class="nvsu">
+		<a href="https://nvsu.ru">Сайт университета</a>
+	</div>
+	<div class="copyright">
+		Николай Ялуков 3002 ФИТиМ
+	</div>
+</footer>
+</body>
+
+</html>
