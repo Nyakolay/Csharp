@@ -31,10 +31,10 @@ header {
   padding: 30px;
   padding-top: 40px;
   font-size: 18px;
-  color: white;
+  color: black;
   font-family: "PT Sans", "Arial", sans-serif;
 
-  background-color: rgba(31,41,224, 1);
+  background-color: rgba(31,41,224, 0.2);
   border-radius: 5px;
   box-shadow: 0 0 3px #cccccc;
 }
